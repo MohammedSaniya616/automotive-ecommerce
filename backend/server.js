@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
@@ -8,10 +9,10 @@ app.use(cors());
 
 // ✅ MongoDB Connection (CORRECT)
 mongoose.connect(
-  "mongodb+srv://mdsaniya2k5_db_user:Saniya123@cluster0.qjdrzjy.mongodb.net/automotiveDB"
-)
-.then(() => console.log("MongoDB Connected"))
-.catch(err => console.log(err));
+  mongoose.connect(process.env.MONGO_URI)
+  .then(() => console.log("MongoDB Connected"))
+  .catch(err => console.log(err));
+
 
 
 // ---------------- SCHEMAS ----------------
